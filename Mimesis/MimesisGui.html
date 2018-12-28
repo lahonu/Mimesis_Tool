@@ -20,7 +20,7 @@
         <h4>XMSG("Select Locale")</h4>
         <ayx data-ui-props='{type:"DropDown", widgetId:"DropDown1", searchable: true}'></ayx>
         <h4>XMSG("Number of records to create (if no input)")</h4>
-        <ayx data-ui-props='{type:"NumericSpinner", widgetId:"NumericSpinner1"}'></ayx>
+        <ayx data-ui-props='{type:"NumericSpinner", widgetId:"NumericSpinner1"}' data-item-props='{dataName: "StartValue"}'></ayx>
 
     </section>
   </form>
@@ -32,37 +32,40 @@
 
         var stringSelectorMulti = new AlteryxDataItems.StringSelectorMulti('ListBoxStringSelector', {
         optionList: [
-{label: 'XMSG("Address - Full Address")', value: "address_full_address"},
-{label: 'XMSG("Address - Coordinates")', value: "address_coordinates"},
-{label: 'XMSG("Address - Country")', value: "address_country"},
-{label: 'XMSG("Address - Postal Code")', value: "address_postal_code"},
-{label: 'XMSG("Code - imei")', value: "code_imei"},
-{label: 'XMSG("Code - isbn")', value: "code_isbn"},
-{label: 'XMSG("Code - Pin")', value: "code_pin"},
-{label: 'XMSG("Food - Dish")', value: "food_dish"},
-{label: 'XMSG("Food - Fruit")', value: "food_fruit"},
-{label: 'XMSG("Food - Vegetables")', value: "food_vegetables"},
-{label: 'XMSG("Game - Gaming Platform")', value: "game_gaming_platform"},
-{label: 'XMSG("Game - Titles")', value: "game_titles"},
-{label: 'XMSG("Person - Blood Type")', value: "person_blood_type"},
-{label: 'XMSG("Person - Email")', value: "person_email"},
-{label: 'XMSG("Person - Full Name")', value: "person_full_name"},
-{label: 'XMSG("Person - Nationality")', value: "person_nationality"},
-{label: 'XMSG("Person - Occupation")', value: "person_occupation"},
-{label: 'XMSG("Person - Telephone")', value: "person_telephone"},
-{label: 'XMSG("Science - Atomic Number")', value: "science_atomic_number"},
-{label: 'XMSG("Science - Chemical Element")', value: "science_chemical_element"},
-{label: 'XMSG("Transport - Airplane")', value: "transport_airplane"},
-{label: 'XMSG("Transport - Car")', value: "transport_car"},
-{label: 'XMSG("Transport - Truck")', value: "transport_truck"},
-{label: 'XMSG("Transport - Vehicle Reg Code")', value: "transport_vehicle_reg_code"}
+		{label: 'XMSG("Address - Full Address")', value: "address_full_address"},
+		{label: 'XMSG("Address - Coordinates")', value: "address_coordinates"},
+		{label: 'XMSG("Address - Country")', value: "address_country"},
+		{label: 'XMSG("Address - Postal Code")', value: "address_postal_code"},
+		{label: 'XMSG("Code - imei")', value: "code_imei"},
+		{label: 'XMSG("Code - isbn")', value: "code_isbn"},
+		{label: 'XMSG("Code - Pin")', value: "code_pin"},
+		{label: 'XMSG("Food - Dish")', value: "food_dish"},
+		{label: 'XMSG("Food - Fruit")', value: "food_fruit"},
+		{label: 'XMSG("Food - Vegetables")', value: "food_vegetables"},
+		{label: 'XMSG("Game - Gaming Platform")', value: "game_gaming_platform"},
+		{label: 'XMSG("Game - Titles")', value: "game_titles"},
+		{label: 'XMSG("Person - Blood Type")', value: "person_blood_type"},
+		{label: 'XMSG("Person - Email")', value: "person_email"},
+		{label: 'XMSG("Person - Full Name")', value: "person_full_name"},
+		{label: 'XMSG("Person - Nationality")', value: "person_nationality"},
+		{label: 'XMSG("Person - Occupation")', value: "person_occupation"},
+		{label: 'XMSG("Person - Telephone")', value: "person_telephone"},
+		{label: 'XMSG("Science - Atomic Number")', value: "science_atomic_number"},
+		{label: 'XMSG("Science - Chemical Element")', value: "science_chemical_element"},
+		{label: 'XMSG("Transport - Airplane")', value: "transport_airplane"},
+		{label: 'XMSG("Transport - Car")', value: "transport_car"},
+		{label: 'XMSG("Transport - Truck")', value: "transport_truck"},
+		{label: 'XMSG("Transport - Vehicle Reg Code")', value: "transport_vehicle_reg_code"}
           ]
         })
         manager.addDataItem(stringSelectorMulti)
         manager.bindDataItemToWidget(stringSelectorMulti, 'ListBox1')
-
-        var numberDataItem = new AlteryxDataItems.SimpleFloat('Number')
-        manager.addDataItem(numberDataItem)
+		
+		var numberDataItem = new AlteryxDataItems.ConstrainedFloat('Number')
+		// Sets default num of records to 100, and restrict minimum to 1
+		numberDataItem.setValue(100)
+		numberDataItem.setMin(1)
+		manager.addDataItem(numberDataItem)
         // Bind to NumericSpinner widget
         manager.bindDataItemToWidget(numberDataItem, 'NumericSpinner1')
 
