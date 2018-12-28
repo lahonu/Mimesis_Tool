@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AlteryxJavaScriptPlugin>
+   <Properties>
+      <MetaInfo>
+		<Name>Mimesis Data Generator</Name>
+		<Description>Generate random data using the Python package Mimesis.</Description>
+		<ToolVersion>1.1</ToolVersion>
+		<CategoryName>Developer</CategoryName>
+		<Author>Sophia F.</Author>
+        <Icon>Mimesis\MimesisIcon.png</Icon>
+      </MetaInfo>
+   </Properties>
+</AlteryxJavaScriptPlugin>
