@@ -5,3 +5,4 @@ This tool uses the Python package [Mimesis](https://mimesis.readthedocs.io/) to 
 
 ## How to Install
 
+Download the latest release from the [releases](https://github.com/lahonu/Mimesis_Tool/releases) page (downloads as a .yxi). Double-click on the YXI installer to install the Mimesis Data Generator Tool. 
