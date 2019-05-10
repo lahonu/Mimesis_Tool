@@ -17,9 +17,9 @@
     <p>
     <section>
         <h2>XMSG("Additional Options")</h2>
-        <h4>XMSG("Select Locale")</h4>
-        <ayx data-ui-props='{type:"DropDown", widgetId:"DropDown1", searchable: true}'></ayx>
-        <h4>XMSG("Number of records to create (if no input)")</h4>
+        <dt>XMSG("Select Locale")</dt><br>
+        <ayx data-ui-props='{type:"DropDown", widgetId:"DropDown1", searchable: true}'></ayx><br>
+        <dt>XMSG("Number of records to create (if no input)")</dt><br>
         <ayx data-ui-props='{type:"NumericSpinner", widgetId:"NumericSpinner1"}' data-item-props='{dataName: "StartValue"}'></ayx>
 
     </section>
@@ -60,7 +60,7 @@
         })
         manager.addDataItem(stringSelectorMulti)
         manager.bindDataItemToWidget(stringSelectorMulti, 'ListBox1')
-		
+
 		var numberDataItem = new AlteryxDataItems.ConstrainedFloat('Number')
 		// Sets default num of records to 100, and restrict minimum to 1
 		numberDataItem.setValue(100)
