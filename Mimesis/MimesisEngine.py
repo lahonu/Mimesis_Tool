@@ -2,7 +2,7 @@ import AlteryxPythonSDK as Sdk
 import xml.etree.ElementTree as Et
 from mimesis import Address
 from mimesis import Code
-from mimesis import Games
+#from mimesis import Games
 from mimesis import Food
 from mimesis import Address
 from mimesis import Person
@@ -156,12 +156,12 @@ class AyxPlugin:
                 if field[1].name == 'food_vegetables':
                     mimesis_object = Food(self.Locale)
                     record_value = mimesis_object.vegetable()
-                if field[1].name == 'game_gaming_platform':
+                '''if field[1].name == 'game_gaming_platform':
                     mimesis_object = Games(self.Locale)
                     record_value = mimesis_object.gaming_platform()
                 if field[1].name == 'game_titles':
                     mimesis_object = Games(self.Locale)
-                    record_value = mimesis_object.game()
+                    record_value = mimesis_object.game()'''
                 if field[1].name == 'person_blood_type':
                     mimesis_object = Person(self.Locale)
                     record_value = mimesis_object.blood_type()
@@ -348,11 +348,11 @@ class IncomingInterface:
             if field[1].name == 'food_vegetables':
                 mimesis_object = Food(self.parent.Locale)
                 record_value = mimesis_object.vegetable()
-            if field[1].name == 'game_gaming_platform':
+            '''if field[1].name == 'game_gaming_platform':
                 mimesis_object = Games(self.parent.Locale)
                 record_value = mimesis_object.gaming_platform()
             if field[1].name == 'game_titles':
-                mimesis_object = Games(self.parent.Locale)
+                mimesis_object = Games(self.parent.Locale)'''
                 record_value = mimesis_object.game()
             if field[1].name == 'person_blood_type':
                 mimesis_object = Person(self.parent.Locale)
