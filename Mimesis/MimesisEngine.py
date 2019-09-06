@@ -2,7 +2,7 @@ import AlteryxPythonSDK as Sdk
 import xml.etree.ElementTree as Et
 from mimesis import Address
 from mimesis import Code
-#from mimesis import Games
+from mimesis import Games
 from mimesis import Food
 from mimesis import Address
 from mimesis import Person
@@ -352,8 +352,8 @@ class IncomingInterface:
                 mimesis_object = Games(self.parent.Locale)
                 record_value = mimesis_object.gaming_platform()
             if field[1].name == 'game_titles':
-                mimesis_object = Games(self.parent.Locale)'''
-                record_value = mimesis_object.game()
+                mimesis_object = Games(self.parent.Locale)
+                record_value = mimesis_object.game()'''
             if field[1].name == 'person_blood_type':
                 mimesis_object = Person(self.parent.Locale)
                 record_value = mimesis_object.blood_type()

@@ -4,7 +4,7 @@
       <MetaInfo>
 		<Name>Mimesis Data Generator</Name>
 		<Description>Generate random data using the Python package Mimesis.</Description>
-		<ToolVersion>1.1</ToolVersion>
+		<ToolVersion>1.2</ToolVersion>
 		<CategoryName>Developer</CategoryName>
 		<Author>Sophia F.</Author>
         <Icon>Mimesis\MimesisIcon.png</Icon>
