@@ -1,13 +1,6 @@
 import AlteryxPythonSDK as Sdk
 import xml.etree.ElementTree as Et
-from mimesis import Address
-from mimesis import Code
-from mimesis import Games
-from mimesis import Food
-from mimesis import Address
-from mimesis import Person
-from mimesis import Science
-from mimesis import Transport
+from mimesis import Address,Code,Food,Person,Science,Transport,Internet,Numbers
 
 import pdb
 
@@ -126,7 +119,19 @@ class AyxPlugin:
         #sophs code:
         for record in range(self.record_limit):
             for field in enumerate(record_info_out):
-                if field[1].name == 'address_full_address':
+                if field[1].name == 'number_float':
+                    mimesis_object = Numbers()
+                    record_value = str(mimesis_object.float_number(end=10000,precision=6))
+                if field[1].name == 'number_float_positive':
+                    mimesis_object = Numbers()
+                    record_value = str(mimesis_object.float_number(start=0,end=10000,precision=6))
+                if field[1].name == 'number_int':
+                    mimesis_object = Numbers()
+                    record_value = str(mimesis_object.integer_number(start=-32767,end=32767))
+                if field[1].name == 'number_int_positive':
+                    mimesis_object = Numbers()
+                    record_value = str(mimesis_object.integer_number(start=0,end=32767))
+                if field[1].name == 'address_street_address':
                     mimesis_object = Address(self.Locale)
                     record_value = mimesis_object.address()
                 if field[1].name == 'address_coordinates':
@@ -134,18 +139,18 @@ class AyxPlugin:
                     record_value = str(mimesis_object.coordinates())
                 if field[1].name == 'address_country':
                     mimesis_object = Address(self.Locale)
-                    record_value = mimesis_object.country()
+                    record_value = mimesis_object.country(allow_random=True)
                 if field[1].name == 'address_postal_code':
                     mimesis_object = Address(self.Locale)
                     record_value = mimesis_object.postal_code()
                 if field[1].name == 'code_imei':
-                    mimesis_object = Code(self.Locale)
+                    mimesis_object = Code()
                     record_value = mimesis_object.imei()
                 if field[1].name == 'code_isbn':
-                    mimesis_object = Code(self.Locale)
+                    mimesis_object = Code()
                     record_value = mimesis_object.isbn()
                 if field[1].name == 'code_pin':
-                    mimesis_object = Code(self.Locale)
+                    mimesis_object = Code()
                     record_value = mimesis_object.pin()
                 if field[1].name == 'food_dish':
                     mimesis_object = Food(self.Locale)
@@ -156,12 +161,15 @@ class AyxPlugin:
                 if field[1].name == 'food_vegetables':
                     mimesis_object = Food(self.Locale)
                     record_value = mimesis_object.vegetable()
-                '''if field[1].name == 'game_gaming_platform':
-                    mimesis_object = Games(self.Locale)
-                    record_value = mimesis_object.gaming_platform()
-                if field[1].name == 'game_titles':
-                    mimesis_object = Games(self.Locale)
-                    record_value = mimesis_object.game()'''
+                if field[1].name == 'internet_url':
+                    mimesis_object = Internet()
+                    record_value = mimesis_object.home_page()
+                if field[1].name == 'internet_ipv4':
+                    mimesis_object = Internet()
+                    record_value = mimesis_object.ip_v4()
+                if field[1].name == 'internet_mac':
+                    mimesis_object = Internet()
+                    record_value = mimesis_object.mac_address()
                 if field[1].name == 'person_blood_type':
                     mimesis_object = Person(self.Locale)
                     record_value = mimesis_object.blood_type()
@@ -187,16 +195,16 @@ class AyxPlugin:
                     mimesis_object = Science(self.Locale)
                     record_value = mimesis_object.chemical_element()
                 if field[1].name == 'transport_airplane':
-                    mimesis_object = Transport(self.Locale)
+                    mimesis_object = Transport()
                     record_value = mimesis_object.airplane()
                 if field[1].name == 'transport_car':
-                    mimesis_object = Transport(self.Locale)
+                    mimesis_object = Transport()
                     record_value = mimesis_object.car()
                 if field[1].name == 'transport_truck':
-                    mimesis_object = Transport(self.Locale)
+                    mimesis_object = Transport()
                     record_value = mimesis_object.truck()
                 if field[1].name == 'transport_vehicle_reg_code':
-                    mimesis_object = Transport(self.Locale)
+                    mimesis_object = Transport()
                     record_value = mimesis_object.vehicle_registration_code()
                 record_info_out[field[0]].set_from_string(record_creator, record_value)
             out_record = record_creator.finalize_record()
@@ -318,79 +326,93 @@ class IncomingInterface:
         #create the new fields
         record_value = None
         for field in enumerate(self.record_info_out):
-            if field[1].name == 'address_full_address':
-                mimesis_object = Address(self.parent.Locale)
+            if field[1].name == 'number_float':
+                mimesis_object = Numbers()
+                record_value = str(mimesis_object.float_number(end=10000,precision=6))
+            if field[1].name == 'number_float_positive':
+                mimesis_object = Numbers()
+                record_value = str(mimesis_object.float_number(start=0,end=10000,precision=6))
+            if field[1].name == 'number_int':
+                mimesis_object = Numbers()
+                record_value = str(mimesis_object.integer_number(start=-32767,end=32767))
+            if field[1].name == 'number_int_positive':
+                mimesis_object = Numbers()
+                record_value = str(mimesis_object.integer_number(start=0,end=32767))
+            if field[1].name == 'address_street_address':
+                mimesis_object = Address(self.Locale)
                 record_value = mimesis_object.address()
             if field[1].name == 'address_coordinates':
-                mimesis_object = Address(self.parent.Locale)
+                mimesis_object = Address(self.Locale)
                 record_value = str(mimesis_object.coordinates())
             if field[1].name == 'address_country':
-                mimesis_object = Address(self.parent.Locale)
-                record_value = mimesis_object.country()
+                mimesis_object = Address(self.Locale)
+                record_value = mimesis_object.country(allow_random=True)
             if field[1].name == 'address_postal_code':
-                mimesis_object = Address(self.parent.Locale)
+                mimesis_object = Address(self.Locale)
                 record_value = mimesis_object.postal_code()
             if field[1].name == 'code_imei':
-                mimesis_object = Code(self.parent.Locale)
+                mimesis_object = Code()
                 record_value = mimesis_object.imei()
             if field[1].name == 'code_isbn':
-                mimesis_object = Code(self.parent.Locale)
+                mimesis_object = Code()
                 record_value = mimesis_object.isbn()
             if field[1].name == 'code_pin':
-                mimesis_object = Code(self.parent.Locale)
+                mimesis_object = Code()
                 record_value = mimesis_object.pin()
             if field[1].name == 'food_dish':
-                mimesis_object = Food(self.parent.Locale)
+                mimesis_object = Food(self.Locale)
                 record_value = mimesis_object.dish()
             if field[1].name == 'food_fruit':
-                mimesis_object = Food(self.parent.Locale)
+                mimesis_object = Food(self.Locale)
                 record_value = mimesis_object.fruit()
             if field[1].name == 'food_vegetables':
-                mimesis_object = Food(self.parent.Locale)
+                mimesis_object = Food(self.Locale)
                 record_value = mimesis_object.vegetable()
-            '''if field[1].name == 'game_gaming_platform':
-                mimesis_object = Games(self.parent.Locale)
-                record_value = mimesis_object.gaming_platform()
-            if field[1].name == 'game_titles':
-                mimesis_object = Games(self.parent.Locale)
-                record_value = mimesis_object.game()'''
+            if field[1].name == 'internet_url':
+                mimesis_object = Internet()
+                record_value = mimesis_object.home_page()
+            if field[1].name == 'internet_ipv4':
+                mimesis_object = Internet()
+                record_value = mimesis_object.ip_v4()
+            if field[1].name == 'internet_mac':
+                mimesis_object = Internet()
+                record_value = mimesis_object.mac_address()
             if field[1].name == 'person_blood_type':
-                mimesis_object = Person(self.parent.Locale)
+                mimesis_object = Person(self.Locale)
                 record_value = mimesis_object.blood_type()
             if field[1].name == 'person_email':
-                mimesis_object = Person(self.parent.Locale)
+                mimesis_object = Person(self.Locale)
                 record_value = mimesis_object.email()
             if field[1].name == 'person_full_name':
-                mimesis_object = Person(self.parent.Locale)
+                mimesis_object = Person(self.Locale)
                 record_value = mimesis_object.full_name()
             if field[1].name == 'person_nationality':
-                mimesis_object = Person(self.parent.Locale)
+                mimesis_object = Person(self.Locale)
                 record_value = mimesis_object.nationality()
             if field[1].name == 'person_occupation':
-                mimesis_object = Person(self.parent.Locale)
+                mimesis_object = Person(self.Locale)
                 record_value = mimesis_object.occupation()
             if field[1].name == 'person_telephone':
-                mimesis_object = Person(self.parent.Locale)
+                mimesis_object = Person(self.Locale)
                 record_value = mimesis_object.telephone()
             if field[1].name == 'science_atomic_number':
-                mimesis_object = Science(self.parent.Locale)
+                mimesis_object = Science(self.Locale)
                 record_value = str(mimesis_object.atomic_number())
             if field[1].name == 'science_chemical_element':
-                mimesis_object = Science(self.parent.Locale)
+                mimesis_object = Science(self.Locale)
                 record_value = mimesis_object.chemical_element()
             if field[1].name == 'transport_airplane':
-                mimesis_object = Transport(self.parent.Locale)
+                mimesis_object = Transport()
                 record_value = mimesis_object.airplane()
             if field[1].name == 'transport_car':
-                mimesis_object = Transport(self.parent.Locale)
+                mimesis_object = Transport()
                 record_value = mimesis_object.car()
             if field[1].name == 'transport_truck':
-                mimesis_object = Transport(self.parent.Locale)
+                mimesis_object = Transport()
                 record_value = mimesis_object.truck()
             if field[1].name == 'transport_vehicle_reg_code':
-                mimesis_object = Transport(self.parent.Locale)
+                mimesis_object = Transport()
                 record_value = mimesis_object.vehicle_registration_code()
-                #pdb.set_trace()
             self.record_info_out[field[0]].set_from_string(self.record_creator, record_value)
         out_record = self.record_creator.finalize_record()
         #self.parent.output_anchor.push_record(out_record, False)

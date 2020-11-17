@@ -17,9 +17,9 @@
     <p>
     <section>
         <h2>XMSG("Additional Options")</h2>
-        <dt>XMSG("Select Locale")</dt><br>
-        <ayx data-ui-props='{type:"DropDown", widgetId:"DropDown1", searchable: true}'></ayx><br>
-        <dt>XMSG("Number of records to create (if no input)")</dt><br>
+        <h4>XMSG("Select Locale")</h4>
+        <ayx data-ui-props='{type:"DropDown", widgetId:"DropDown1", searchable: true}'></ayx>
+        <h4>XMSG("Number of records to create (if no input)")</h4>
         <ayx data-ui-props='{type:"NumericSpinner", widgetId:"NumericSpinner1"}' data-item-props='{dataName: "StartValue"}'></ayx>
 
     </section>
@@ -32,33 +32,44 @@
 
         var stringSelectorMulti = new AlteryxDataItems.StringSelectorMulti('ListBoxStringSelector', {
         optionList: [
-		{label: 'XMSG("Address - Full Address")', value: "address_full_address"},
-		{label: 'XMSG("Address - Coordinates")', value: "address_coordinates"},
-		{label: 'XMSG("Address - Country")', value: "address_country"},
-		{label: 'XMSG("Address - Postal Code")', value: "address_postal_code"},
-		{label: 'XMSG("Code - imei")', value: "code_imei"},
-		{label: 'XMSG("Code - isbn")', value: "code_isbn"},
-		{label: 'XMSG("Code - Pin")', value: "code_pin"},
-		{label: 'XMSG("Food - Dish")', value: "food_dish"},
-		{label: 'XMSG("Food - Fruit")', value: "food_fruit"},
-		{label: 'XMSG("Food - Vegetables")', value: "food_vegetables"},
-		{label: 'XMSG("Person - Blood Type")', value: "person_blood_type"},
-		{label: 'XMSG("Person - Email")', value: "person_email"},
-		{label: 'XMSG("Person - Full Name")', value: "person_full_name"},
-		{label: 'XMSG("Person - Nationality")', value: "person_nationality"},
-		{label: 'XMSG("Person - Occupation")', value: "person_occupation"},
-		{label: 'XMSG("Person - Telephone")', value: "person_telephone"},
-		{label: 'XMSG("Science - Atomic Number")', value: "science_atomic_number"},
-		{label: 'XMSG("Science - Chemical Element")', value: "science_chemical_element"},
-		{label: 'XMSG("Transport - Airplane")', value: "transport_airplane"},
-		{label: 'XMSG("Transport - Car")', value: "transport_car"},
-		{label: 'XMSG("Transport - Truck")', value: "transport_truck"},
-		{label: 'XMSG("Transport - Vehicle Reg Code")', value: "transport_vehicle_reg_code"}
+{label: 'XMSG("Number - Int16 - All")', value: "number_int"},
+{label: 'XMSG("Number - Int16 - Positive Only")', value: "number_int_positive"},
+{label: 'XMSG("Number - Float - Precision=6")', value: "number_float"},
+{label: 'XMSG("Number - Float - Positive Only - Precision=6")', value: "number_float_positive"},
+{label: 'XMSG("Address - Street Address")', value: "address_street_address"},
+{label: 'XMSG("Address - Coordinates")', value: "address_coordinates"},
+{label: 'XMSG("Address - Country")', value: "address_country"},
+{label: 'XMSG("Address - Postal Code")', value: "address_postal_code"},
+{label: 'XMSG("Code - imei")', value: "code_imei"},
+{label: 'XMSG("Code - isbn")', value: "code_isbn"},
+{label: 'XMSG("Code - Pin")', value: "code_pin"},
+{label: 'XMSG("Food - Dish")', value: "food_dish"},
+{label: 'XMSG("Food - Fruit")', value: "food_fruit"},
+{label: 'XMSG("Food - Vegetables")', value: "food_vegetables"},
+{label: 'XMSG("Internet - URL - Home Page")', value: "internet_url"},
+{label: 'XMSG("Internet - IPv4 Address")', value: "internet_ipv4"},
+{label: 'XMSG("Internet - MAC Address")', value: "internet_mac"},
+{label: 'XMSG("Person - Blood Type")', value: "person_blood_type"},
+{label: 'XMSG("Person - Email")', value: "person_email"},
+{label: 'XMSG("Person - Full Name")', value: "person_full_name"},
+{label: 'XMSG("Person - Nationality")', value: "person_nationality"},
+{label: 'XMSG("Person - Occupation")', value: "person_occupation"},
+{label: 'XMSG("Person - Telephone")', value: "person_telephone"},
+{label: 'XMSG("Science - Atomic Number")', value: "science_atomic_number"},
+{label: 'XMSG("Science - Chemical Element")', value: "science_chemical_element"},
+{label: 'XMSG("Transport - Airplane")', value: "transport_airplane"},
+{label: 'XMSG("Transport - Car")', value: "transport_car"},
+{label: 'XMSG("Transport - Truck")', value: "transport_truck"},
+{label: 'XMSG("Transport - Vehicle Reg Code")', value: "transport_vehicle_reg_code"}
           ]
         })
         manager.addDataItem(stringSelectorMulti)
         manager.bindDataItemToWidget(stringSelectorMulti, 'ListBox1')
-
+	
+		var startValue = manager.getDataItem('StartValue')
+		startValue.setValue(100)
+		startValue.setAllowedPrecision(0)
+		
 		var numberDataItem = new AlteryxDataItems.ConstrainedFloat('Number')
 		// Sets default num of records to 100, and restrict minimum to 1
 		numberDataItem.setValue(100)
@@ -69,6 +80,7 @@
 
         var stringSelector = new AlteryxDataItems.StringSelector('Locale', {
         optionList: [
+          {label: 'XMSG("English")', value: "en"},
           {label: 'XMSG("Australian English")', value: "en-au"},
           {label: 'XMSG("Austrian German")', value: "de-at"},
           {label: 'XMSG("Belgium Dutch")', value: "nl-be"},
@@ -79,7 +91,6 @@
           {label: 'XMSG("Czech")', value: "cs"},
           {label: 'XMSG("Danish")', value: "da"},
           {label: 'XMSG("Dutch")', value: "nl"},
-          {label: 'XMSG("English")', value: "en"},
           {label: 'XMSG("Estonian")', value: "et"},
           {label: 'XMSG("Farsi")', value: "fa"},
           {label: 'XMSG("Finnish")', value: "fi"},

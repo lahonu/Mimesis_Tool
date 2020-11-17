@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<AlteryxJavaScriptPlugin>
+  <EngineSettings EngineDll="Python" EngineDllEntryPoint="MimesisEngine.py" SDKVersion="10.1" />
+  <GuiSettings Html="MimesisGui.html" Icon="MimesisIcon.png" Help="https://github.com/lahonu/Mimesis_Tool" SDKVersion="10.1">
+    <InputConnections>
+      <Connection Name="Input" AllowMultiple="False" Optional="True" Type="Connection" Label=""/>
+    </InputConnections>
+    <OutputConnections>
+      <Connection Name="Output" AllowMultiple="False" Optional="False" Type="Connection" Label=""/>
+    </OutputConnections>
+  </GuiSettings>
+  <Properties>
+    <MetaInfo>
+      <Name>Mimesis Data Generator</Name>
+	  <RootToolName>Mimesis</RootToolName>
+      <Description>Generate random data using the Python package Mimesis. Version 2.0.</Description>
+      <CategoryName>Developer</CategoryName>
+      <SearchTags>python, sdk, input, python sdk, optional input</SearchTags>
+      <ToolVersion>2.0</ToolVersion>
+      <Author>Sophia F.</Author>
+      <Company>Alteryx, Inc.</Company>
+      <Copyright>2020</Copyright>
+    </MetaInfo>
+  </Properties>
+</AlteryxJavaScriptPlugin>
