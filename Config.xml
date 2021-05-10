@@ -5,10 +5,10 @@
 		<Name>Mimesis Data Generator</Name>
 		<RootToolName>Mimesis</RootToolName>
 		<Description>Generate random data using the Python package Mimesis.</Description>
-		<ToolVersion>2.0</ToolVersion>
+		<ToolVersion>2.1</ToolVersion>
 		<CategoryName>Developer</CategoryName>
 		<Author>Sophia F.</Author>
-        <Icon>Mimesis_v2.0\MimesisIcon.png</Icon>
+        <Icon>Mimesis_v2.1\MimesisIcon.png</Icon>
       </MetaInfo>
    </Properties>
 </AlteryxJavaScriptPlugin>

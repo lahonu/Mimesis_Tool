@@ -13,13 +13,13 @@
     <MetaInfo>
       <Name>Mimesis Data Generator</Name>
 	  <RootToolName>Mimesis</RootToolName>
-      <Description>Generate random data using the Python package Mimesis. Version 2.0.</Description>
+      <Description>Generate random data using the Python package Mimesis. Version 2.1.</Description>
       <CategoryName>Developer</CategoryName>
-      <SearchTags>python, sdk, input, python sdk, optional input</SearchTags>
-      <ToolVersion>2.0</ToolVersion>
+      <SearchTags>python, sdk, input, python sdk, optional input,data</SearchTags>
+      <ToolVersion>2.1</ToolVersion>
       <Author>Sophia F.</Author>
       <Company>Alteryx, Inc.</Company>
-      <Copyright>2020</Copyright>
+      <Copyright>2021</Copyright>
     </MetaInfo>
   </Properties>
 </AlteryxJavaScriptPlugin>
